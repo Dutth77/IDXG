@@ -1,0 +1,6 @@
+import 'package:equatable/equatable.dart';import 'package:flutter/material.dart';import '/core/app_export.dart';import '../models/homesearch_item_model.dart';import 'package:aswini_s_application5/presentation/home_search_page/models/home_search_model.dart';part 'home_search_event.dart';part 'home_search_state.dart';/// A bloc that manages the state of a HomeSearch according to the event that is dispatched to it.
+class HomeSearchBloc extends Bloc<HomeSearchEvent, HomeSearchState> {HomeSearchBloc(HomeSearchState initialState) : super(initialState) { on<HomeSearchInitialEvent>(_onInitialize); }
+
+List<HomesearchItemModel> fillHomesearchItemList() { return [HomesearchItemModel(mightyCincoFamily: ImageConstant.imgImg40x40, mightyCincoFamily1: "Mighty Cinco Family"), HomesearchItemModel(mightyCincoFamily: ImageConstant.imgImg5, mightyCincoFamily1: "Casablanca Ground"), HomesearchItemModel(mightyCincoFamily: ImageConstant.imgImg6, mightyCincoFamily1: "Primary Apartment")]; } 
+_onInitialize(HomeSearchInitialEvent event, Emitter<HomeSearchState> emit, ) async  { emit(state.copyWith(searchController: TextEditingController())); emit(state.copyWith(homeSearchModelObj: state.homeSearchModelObj?.copyWith(homesearchItemList: fillHomesearchItemList()))); } 
+ }
