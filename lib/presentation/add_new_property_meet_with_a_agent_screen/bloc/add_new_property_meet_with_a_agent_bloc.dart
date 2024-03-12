@@ -1,0 +1,6 @@
+import 'package:equatable/equatable.dart';import 'package:flutter/material.dart';import '/core/app_export.dart';import 'package:easy_date_timeline/easy_date_timeline.dart';import '../models/time_item_model.dart';import 'package:aswini_s_application5/presentation/add_new_property_meet_with_a_agent_screen/models/add_new_property_meet_with_a_agent_model.dart';part 'add_new_property_meet_with_a_agent_event.dart';part 'add_new_property_meet_with_a_agent_state.dart';/// A bloc that manages the state of a AddNewPropertyMeetWithAAgent according to the event that is dispatched to it.
+class AddNewPropertyMeetWithAAgentBloc extends Bloc<AddNewPropertyMeetWithAAgentEvent, AddNewPropertyMeetWithAAgentState> {AddNewPropertyMeetWithAAgentBloc(AddNewPropertyMeetWithAAgentState initialState) : super(initialState) { on<AddNewPropertyMeetWithAAgentInitialEvent>(_onInitialize); }
+
+_onInitialize(AddNewPropertyMeetWithAAgentInitialEvent event, Emitter<AddNewPropertyMeetWithAAgentState> emit, ) async  { emit(state.copyWith(addNewPropertyMeetWithAAgentModelObj: state.addNewPropertyMeetWithAAgentModelObj?.copyWith(timeItemList: fillTimeItemList()))); } 
+List<TimeItemModel> fillTimeItemList() { return [TimeItemModel(time: "9:00 AM"), TimeItemModel(time: "9:30 AM"), TimeItemModel(time: "10:00 AM"), TimeItemModel(time: "10:30 AM")]; } 
+ }

@@ -1,0 +1,7 @@
+import 'package:equatable/equatable.dart';import 'package:flutter/material.dart';import '/core/app_export.dart';import 'package:aswini_s_application5/presentation/add_new_property_address_screen/models/add_new_property_address_model.dart';part 'add_new_property_address_event.dart';part 'add_new_property_address_state.dart';/// A bloc that manages the state of a AddNewPropertyAddress according to the event that is dispatched to it.
+class AddNewPropertyAddressBloc extends Bloc<AddNewPropertyAddressEvent, AddNewPropertyAddressState> {AddNewPropertyAddressBloc(AddNewPropertyAddressState initialState) : super(initialState) { on<AddNewPropertyAddressInitialEvent>(_onInitialize); on<ChangeDropDownEvent>(_changeDropDown); }
+
+_changeDropDown(ChangeDropDownEvent event, Emitter<AddNewPropertyAddressState> emit, ) { emit(state.copyWith(selectedDropDownValue: event.value)); } 
+List<SelectionPopupModel> fillDropdownItemList() { return [SelectionPopupModel(id: 1, title: "Item One", isSelected: true), SelectionPopupModel(id: 2, title: "Item Two"), SelectionPopupModel(id: 3, title: "Item Three")]; } 
+_onInitialize(AddNewPropertyAddressInitialEvent event, Emitter<AddNewPropertyAddressState> emit, ) async  { emit(state.copyWith(addressController: TextEditingController(), inputFieldsController: TextEditingController(), nameController: TextEditingController(), zipcodeController: TextEditingController())); emit(state.copyWith(addNewPropertyAddressModelObj: state.addNewPropertyAddressModelObj?.copyWith(dropdownItemList: fillDropdownItemList()))); } 
+ }
